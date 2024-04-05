@@ -3,6 +3,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 from typing import Optional, Union
 
+"""
+@author Jeremy Hopkins
+@author Iris Yang
+@version 0.1.3
+"""
 class Secant():
 
     def __init__(

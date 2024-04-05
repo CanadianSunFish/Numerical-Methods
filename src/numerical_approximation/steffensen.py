@@ -3,6 +3,11 @@ import matplotlib.pyplot as plt
 from scipy.misc import derivative
 from typing import Optional, Union
 
+"""
+@author Jeremy Hopkins
+@author Iris Yang
+@version 0.2.1
+"""
 class Steffensen():
 
     def __init__(

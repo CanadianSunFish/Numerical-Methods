@@ -3,6 +3,11 @@ import matplotlib.pyplot as plt
 from scipy.misc import derivative
 from typing import Optional, Union
 
+"""
+@author Jeremy Hopkins
+@author Iris Yang
+@version 0.2.3
+"""
 class Newton():
 
     def __init__(
@@ -87,4 +92,22 @@ class Newton():
         ax.legend()
         
         return fig, ax
+    
+
+    def _find_starting_error(self, error):
+
+        f = self.f
+        x = self.x
         
+        x3 = 999
+        x2 = 999
+        x1 = 999
+
+        while np.abs(x1 - np.sqrt(2)) > error:
+            x = x - ((f(x))/(derivative(f, x)))
+
+            x3 = x2
+            x2 = x1
+            x1 = x
+
+        return x3

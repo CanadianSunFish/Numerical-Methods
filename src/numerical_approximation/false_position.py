@@ -2,6 +2,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 from typing import Optional, Union
 
+"""
+@author Jeremy Hopkins
+@author Iris Yang
+@version 0.2.1
+"""
 class FalsePosition():
 
     def __init__(
