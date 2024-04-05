@@ -76,7 +76,6 @@ class Horner():
         ax.set_xlabel("x-axis")
         ax.set_ylabel("y-axis")
         ax.plot(x, y, label='Polynomial')
-        # ax.scatter(x, y, s=5)
         for i in range(len(y)):
             y_plot = y[i]
             if (y_plot > -self.error and y_plot < self.error):

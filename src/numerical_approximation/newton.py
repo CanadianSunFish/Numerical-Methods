@@ -16,7 +16,8 @@ class Newton():
         x: Union[int, float], 
         error: Optional[Union[int, float]] = None,
         string_func: Optional[str] = None,
-        func_solution: Optional[float] = None
+        func_solution: Optional[float] = None,
+        txt_pos: Optional[str] = 'bottom right'
     ):
         """Construct `Newton`
         
@@ -25,6 +26,8 @@ class Newton():
                 x: Starting value.
                 error: Error bounds.
                 string_func: String representation of function being estimated.
+                func_sol: The true soltion to the function.
+                txt_pos: Positioning for txt plotting.
 
         """
 
@@ -52,6 +55,9 @@ class Newton():
             assert isinstance(func_solution, float), "func_solution must be float"
         self.func_solution = func_solution
 
+        assert isinstance(txt_pos, str), "txt_pos must be a string"
+        self.txt_pos = txt_pos
+
         
     def solve(self) -> float:
 
@@ -67,32 +73,37 @@ class Newton():
         self.count += 1
 
         if(np.abs(f(x)) < self.error):
-            self.approx_vals.append(x)
             return x
         
         x_n = x - ((f(x))/(derivative(f, x)))
-
-        if self.count == 3:
-            print(x_n - np.sqrt(2))
 
         self.approx_vals.append(x_n)
 
         return self.method(f, x_n)
 
 
-    def plot_solution(self) -> tuple[plt.Figure, plt.Axes]:
+    def plot_solution(self, error) -> tuple[plt.Figure, plt.Axes]:
         fig, ax = plt.subplots()
+        fig.set_size_inches(11, 8.5)
         if self.string_func is not None:
             ax.set_title("Newton Method for " + self.string_func)
         else:
             ax.set_title("Newton Method")
         ax.set_xlabel("Num Computations")
         ax.set_ylabel("Approximation")
-        ax.text(0.96, 0.065, f'Solution: {self.func_solution:.5f}', ha='right', va='bottom', transform=ax.transAxes)
-        ax.plot(range(len(self.approx_vals)), self.approx_vals, label='Approximation')
-        ax.scatter(range(len(self.approx_vals)), self.approx_vals, s=5)
+        if self.txt_pos == 'bottom right':
+            ax.text(0.9675, 0.065, f'Target Solution: {self.func_solution:.1f}', ha='right', va='bottom', transform=ax.transAxes)
+        if self.txt_pos == 'bottom left':
+            ax.text(0.25, 0.065, f'Target Solution: {self.func_solution:.1f}', ha='right', va='bottom', transform=ax.transAxes)
+        if self.txt_pos == 'top left':
+            ax.text(0.25, 0.935, f'Target Solution: {self.func_solution:.1f}', ha='right', va='bottom', transform=ax.transAxes)
+        if self.txt_pos == 'top right':
+            ax.text(0.9675, 0.935, f'Target Solution: {self.func_solution:.1f}', ha='right', va='bottom', transform=ax.transAxes)
+        x = range(len(self.approx_vals))    
+        ax.plot(x, self.approx_vals, label='Approximation')
+        ax.scatter(x, self.approx_vals, s=5)
         if self.func_solution is not None:
-            ax.axhline(y=self.solution, color='lightgreen', linestyle='-', label='Solution')
+            ax.axhline(y=self.func_solution, color='lightgreen', linestyle='-', label='Solution')
         ax.legend()
         
         return fig, ax
@@ -108,7 +119,10 @@ class Newton():
         x1 = 999
 
         while np.abs(x1 - np.sqrt(2)) > error:
+            # print(x)
             x = x - ((f(x))/(derivative(f, x)))
+
+            self.approx_vals.append(x)
 
             x3 = x2
             x2 = x1
