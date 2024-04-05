@@ -146,21 +146,21 @@ def horner_test(polynomial, a, b, error, step, string_func):
 
 if __name__ == "__main__":
 
-    f = lambda x: x**2 - 2
+    # f = lambda x: x**2 - 2
     
-    # secant_test(f, 0, 2, 0.1, "x\u00b2-1", np.sqrt(2))
+    # secant_test(f, 0, 2, 0.01, "x\u00b2-1", np.sqrt(2))
     # bisection_test(f, 0, 2, 1e-15, "x\u00b2-1", np.sqrt(2))
     # false_position_test(f, 0, 2, 1e-15, "x\u00b2-1", np.sqrt(2))
     # newton_test(f, 1, 1e-15, "x\u00b2-1", np.sqrt(2))
     # steffensen_test(f, 1, 1e-15, "x\u00b2-1", np.sqrt(2))
 
-    # f = lambda x: x**3 - 0
+    f = lambda x: x**3 - 0
     
-    # secant_test(f, -0.05, 0.05, 0.01, "x\u00b2-0", 0.0)
-    # bisection_test(f, -0.5, 0.5, 1e-3, "x\u00b2-0", 0.0)
-    # false_position_test(f, -0.5, 0.5, 1e-3, "x\u00b2-0", 0.0)
-    # newton_test(f, 0.5, 1e-3, "x\u00b2-0", 0.0)
-    # steffensen_test(f, 0.5, 1e-3, "x\u00b2-0", 0.0)
+    secant_test(f, -0.05, 0.05, 0.01, "x\u00b2-0", 0.0)
+    bisection_test(f, -0.5, 0.5, 1e-3, "x\u00b2-0", 0.0)
+    false_position_test(f, -0.5, 0.5, 1e-3, "x\u00b2-0", 0.0)
+    newton_test(f, 0.5, 1e-3, "x\u00b2-0", 0.0)
+    steffensen_test(f, 0.5, 1e-3, "x\u00b2-0", 0.0)
 
     # polynomial = [8, 0, -8, 0, 1]
     # horner_test(polynomial, -1.1, 1.1, 0.002, 0.001, r"$8x^4-8x^2-1$")
@@ -168,8 +168,8 @@ if __name__ == "__main__":
     # polynomial = [1, 0, -6/7, 0, 3/35]
     # horner_test(polynomial, -1.1, 1.1, 0.002, 0.01, r"$x^4-\frac{6}{7}x^2-\frac{3}{35}$")
 
-    newton = Newton(f, 1, 1e-15)
-    print(newton._find_starting_error(0.001))
-    newtontest = Newton(f, 1.5, 0.001)
-    sol = newtontest.solve()
-    print(newtontest.count)
+    # newton = Newton(f, 1, 1e-15)
+    # print(newton._find_starting_error(0.001))
+    # newtontest = Newton(f, 1.5, 0.001)
+    # sol = newtontest.solve()
+    # print(newtontest.count)

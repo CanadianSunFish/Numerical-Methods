@@ -67,9 +67,13 @@ class Newton():
         self.count += 1
 
         if(np.abs(f(x)) < self.error):
+            self.approx_vals.append(x)
             return x
         
         x_n = x - ((f(x))/(derivative(f, x)))
+
+        if self.count == 3:
+            print(x_n - np.sqrt(2))
 
         self.approx_vals.append(x_n)
 
@@ -84,7 +88,7 @@ class Newton():
             ax.set_title("Newton Method")
         ax.set_xlabel("Num Computations")
         ax.set_ylabel("Approximation")
-        ax.text(0.96, 0.05, f'Solution: {self.solution:.5f}', ha='right', va='bottom', transform=ax.transAxes)
+        ax.text(0.96, 0.065, f'Solution: {self.func_solution:.5f}', ha='right', va='bottom', transform=ax.transAxes)
         ax.plot(range(len(self.approx_vals)), self.approx_vals, label='Approximation')
         ax.scatter(range(len(self.approx_vals)), self.approx_vals, s=5)
         if self.func_solution is not None:

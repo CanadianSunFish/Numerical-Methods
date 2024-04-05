@@ -86,7 +86,7 @@ class Steffensen():
             ax.set_title("Steffensen Method")
         ax.set_xlabel("Num Computations")
         ax.set_ylabel("Approximation")
-        ax.text(0.96, 0.05, f'Solution: {self.solution:.5f}', ha='right', va='bottom', transform=ax.transAxes)
+        ax.text(0.96, 0.065, f'Solution: {self.func_solution:.5f}', ha='right', va='bottom', transform=ax.transAxes)
         ax.plot(range(len(self.approx_vals)), self.approx_vals, label='Approximation')
         ax.scatter(range(len(self.approx_vals)), self.approx_vals, s=5)
         if self.func_solution is not None:
