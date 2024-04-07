@@ -82,7 +82,7 @@ class Newton():
         return self.method(f, x_n)
 
 
-    def plot_solution(self, error) -> tuple[plt.Figure, plt.Axes]:
+    def plot_solution(self) -> tuple[plt.Figure, plt.Axes]:
         fig, ax = plt.subplots()
         fig.set_size_inches(11, 8.5)
         if self.string_func is not None:

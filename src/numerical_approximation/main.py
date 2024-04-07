@@ -163,40 +163,41 @@ def newton_error_test(f, x, error, string_func):
     print("==============================")
     print(" ")
 
-    fig, ax = newton.plot_solution(True)
+    fig, ax = newton.plot_solution()
     plt.show()
 
 if __name__ == "__main__":
 
     f = lambda x: x**2 - 2
     
-    # secant_test(f, 0, 2, 0.01, "x\u00b2-2", np.sqrt(2), 'top left') # top left
-    # bisection_test(f, 0, 2, 1e-15, "x\u00b2-2", np.sqrt(2), 'bottom right') # fine
-    # false_position_test(f, 0, 2, 1e-15, "x\u00b2-2", np.sqrt(2), 'bottom left') # up a little or bottom left
-    # newton_test(f, 1, 1e-15, "x\u00b2-2", np.sqrt(2), 'bottom right') # fine
-    # steffensen_test(f, 1, 1e-15, "x\u00b2-2", np.sqrt(2), 'bottom right') # fine
+    secant_test(f, 0, 2, 0.01, "x\u00b2-2", np.sqrt(2), 'top left') # top left
+    bisection_test(f, 0, 2, 1e-15, "x\u00b2-2", np.sqrt(2), 'bottom right') # fine
+    false_position_test(f, 0, 2, 1e-15, "x\u00b2-2", np.sqrt(2), 'bottom left') # up a little or bottom left
+    newton_test(f, 1, 1e-15, "x\u00b2-2", np.sqrt(2), 'bottom right') # fine
+    steffensen_test(f, 1, 1e-15, "x\u00b2-2", np.sqrt(2), 'bottom right') # fine
 
-    # f = lambda x: x**3 - 0
+    f = lambda x: x**3 - 0
     
-    # secant_test(f, -0.05, 0.05, 0.01, "x\u00b2-0", 0.0, 'bottom right') # fine
-    # bisection_test(f, -0.5, 0.5, 1e-3, "x\u00b2-0", 0.0, 'bottom right') # fine
-    # false_position_test(f, -0.5, 0.5, 1e-3, "x\u00b2-0", 0.0, 'bottom right') # fine
-    # newton_test(f, 0.5, 1e-3, "x\u00b2-0", 0.0, 'bottom left') # bottom left
-    # steffensen_test(f, 0.5, 1e-3, "x\u00b2-0", 0.0, 'bottom left') # bottom left
+    secant_test(f, -0.05, 0.05, 0.01, "x\u00b2-0", 0.0, 'bottom right') # fine
+    bisection_test(f, -0.5, 0.5, 1e-3, "x\u00b2-0", 0.0, 'bottom right') # fine
+    false_position_test(f, -0.5, 0.5, 1e-3, "x\u00b2-0", 0.0, 'bottom right') # fine
+    newton_test(f, 0.5, 1e-3, "x\u00b2-0", 0.0, 'bottom left') # bottom left
+    steffensen_test(f, 0.5, 1e-3, "x\u00b2-0", 0.0, 'bottom left') # bottom left
 
-    # f = lambda x: x**2 - 3
+    f = lambda x: x**2 - 3
     
-    # secant_test(f, 1, 2, 0.01, r"$x^2-3$", np.sqrt(3), 'bottom right') # fine
-    # bisection_test(f, 1, 2, 1e-5, r"$x^2-3$", np.sqrt(3), 'bottom right') # fine
-    # false_position_test(f, 1, 2, 1e-5, r"$x^2-3$", np.sqrt(3), 'bottom left') # fine
-    # newton_test(f, 2, 1e-5, r"$x^2-3$", np.sqrt(3), 'bottom right') # bottom left
-    # steffensen_test(f, 2, 1e-5, r"$x^2-3$", np.sqrt(3), 'bottom right') # bottom left
+    secant_test(f, 1, 2, 0.01, r"$x^2-3$", np.sqrt(3), 'bottom right') # fine
+    bisection_test(f, 1, 2, 1e-5, r"$x^2-3$", np.sqrt(3), 'bottom right') # fine
+    false_position_test(f, 1, 2, 1e-5, r"$x^2-3$", np.sqrt(3), 'bottom left') # fine
+    newton_test(f, 2, 1e-5, r"$x^2-3$", np.sqrt(3), 'bottom right') # bottom left
+    steffensen_test(f, 2, 1e-5, r"$x^2-3$", np.sqrt(3), 'bottom right') # bottom left
 
-    # polynomial = [8, 0, -8, 0, 1]
-    # horner_test(polynomial, -1.1, 1.1, 0.002, 0.001, r"$8x^4-8x^2-1$")
+    polynomial = [8, 0, -8, 0, 1]
+    horner_test(polynomial, -1.1, 1.1, 0.002, 0.001, r"$8x^4-8x^2-1$")
 
-    # polynomial = [1, 0, -6/7, 0, 3/35]
-    # horner_test(polynomial, -1.1, 1.1, 0.002, 0.01, r"$x^4-\frac{6}{7}x^2-\frac{3}{35}$")
+    polynomial = [1, 0, -6/7, 0, 3/35]
+    horner_test(polynomial, -1.1, 1.1, 0.002, 0.01, r"$x^4-\frac{6}{7}x^2-\frac{3}{35}$")
+
+    f = lambda x: x**2 - 2
 
     newton_error_test(f, 1, 1e-15, r"$x^2-2$")
-    
