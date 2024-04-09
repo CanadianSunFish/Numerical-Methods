@@ -10,7 +10,7 @@ from horner import *
 """
 @author Jeremy Hopkins
 @author Iris Yang
-@version 0.2.1
+@version 0.2.3
 """
 def secant_test(f, a, b, error, string_func, sol, txt_pos) -> None:
     start = time.time()
@@ -31,6 +31,7 @@ def secant_test(f, a, b, error, string_func, sol, txt_pos) -> None:
     print(" ")
 
     fig, ax = secant.plot_solution()
+    plt.savefig(f"./src/numerical_approximation/fig/secant_{string_func}.png")
     plt.show()
 
 def bisection_test(f, a, b, error, string_func, sol, txt_pos):
@@ -52,6 +53,7 @@ def bisection_test(f, a, b, error, string_func, sol, txt_pos):
     print(" ")
 
     fig, ax = bisection.plot_solution()
+    plt.savefig(f"./src/numerical_approximation/fig/bisection_{string_func}.png")
     plt.show()
 
 def false_position_test(f, a, b, error, string_func, sol, txt_pos):
@@ -73,6 +75,7 @@ def false_position_test(f, a, b, error, string_func, sol, txt_pos):
     print(" ")
 
     fig, ax = false_position.plot_solution()
+    plt.savefig(f"./src/numerical_approximation/fig/false_pos_{string_func}.png")
     plt.show()
 
 def newton_test(f, x, error, string_func, sol, txt_pos):
@@ -94,6 +97,7 @@ def newton_test(f, x, error, string_func, sol, txt_pos):
     print(" ")
 
     fig, ax = newton.plot_solution()
+    plt.savefig(f"./src/numerical_approximation/fig/newton_{string_func}.png")
     plt.show()
 
 def steffensen_test(f, x, error, string_func, sol, txt_pos):
@@ -115,6 +119,7 @@ def steffensen_test(f, x, error, string_func, sol, txt_pos):
     print(" ")
 
     fig, ax = steffensen.plot_solution()
+    plt.savefig(f"./src/numerical_approximation/fig/steffensen_{string_func}.png")
     plt.show()
 
 def horner_test(polynomial, a, b, error, step, string_func):
@@ -141,6 +146,7 @@ def horner_test(polynomial, a, b, error, step, string_func):
     print(" ")
 
     fig, ax = horner.plot_solution(x, y)
+    plt.savefig(f"./src/numerical_approximation/fig/horner_{np.round(polynomial, 2)}.png")
     plt.show()
 
 def newton_error_test(f, x, error, string_func):
@@ -157,13 +163,14 @@ def newton_error_test(f, x, error, string_func):
     print("NEWTON 3 ITERATIONS TO 0.001 ERROR")
     print("Function: " + string_func)
     print(f"Starting Value: {start}")
+    print(f"Error: {np.abs(sol - np.sqrt(2))}s")
     print(f"Number of Iterations Starting at {start}: {newton_val.count}")
     print(f"Solution Starting at {start}: {sol}")
-    print(f"Computation time: {run:.6f}s")
     print("==============================")
     print(" ")
 
     fig, ax = newton.plot_solution()
+    plt.savefig(f"./src/numerical_approximation/fig/newton_error_solution.png")
     plt.show()
 
 if __name__ == "__main__":
@@ -200,4 +207,4 @@ if __name__ == "__main__":
 
     f = lambda x: x**2 - 2
 
-    newton_error_test(f, 1, 1e-15, r"$x^2-2$")
+    newton_error_test(f, 1, 1e-15, "x\u00b2-2")
